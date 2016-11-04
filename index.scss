@@ -1,0 +1,48 @@
+@mixin qualify($element-selector) {
+    @at-root #{unquote($element-selector) + &} {
+        @content;
+    }
+}
+
+//
+// Webkit
+//
+@mixin webkit {
+    &:not(*:root) {
+        @content;
+    }
+}
+
+//
+// Firefox
+//
+@mixin firefox {
+    @include qualify('_:-moz-tree-row(hover), ') {
+        @content;
+    }
+}
+
+//
+// Edge
+//
+@mixin edge {
+    @supports (-ms-ime-align: auto) {
+        @content;
+    }
+}
+
+
+//
+// Internet Explorer
+//
+@mixin ie-10-up {
+    @include qualify('_:-ms-lang(x), ') {
+        @content;
+    }
+}
+
+@mixin ie-11 {
+    @include qualify('_:-ms-fullscreen, :root ') {
+        @content;
+    }
+}
