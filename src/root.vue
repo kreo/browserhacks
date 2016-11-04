@@ -1,5 +1,5 @@
 <style lang="scss">
-    @import '../index';
+    @import '../browserhacks';
 
     div {
         font-family: 'Open Sans', sans-serif;
